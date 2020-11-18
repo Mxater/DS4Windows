@@ -1352,5 +1352,118 @@ namespace DS4WinWPF.DS4Forms
         {
             ApplyProfileStep();
         }
+
+        private void btPollRateCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cRightTrigger_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int deviceNum = profileSettingsVM.FuncDevNum;
+            if (deviceNum < ControlService.CURRENT_DS4_CONTROLLER_LIMIT)
+            {
+                DS4Device d = App.rootHub.DS4Controllers[deviceNum];
+                if (d != null)
+                {
+
+                    var oldValue= profileSettingsVM.RightTrigger;
+                    DS4HapticState.TriggerType currentVal =DS4HapticState.TriggerType.Off; 
+                    switch (cRightTrigger.SelectedIndex)
+                    {
+                        case 0:
+                            currentVal = DS4HapticState.TriggerType.Off;
+                            break;
+                        case 1:
+                            currentVal = DS4HapticState.TriggerType.Rigid;
+                            break;
+                        case 2:
+                            currentVal = DS4HapticState.TriggerType.Pulse;
+                            break;
+                    }
+                    profileSettingsVM.RightTrigger = cRightTrigger.SelectedIndex;
+                    if(d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
+                    {
+                        var dd = (DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)d;
+                        dd.SetRightTrigger(currentVal);
+                    }
+                }
+            }
+        }
+
+        private void cLeftTrigger_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int deviceNum = profileSettingsVM.FuncDevNum;
+            if (deviceNum < ControlService.CURRENT_DS4_CONTROLLER_LIMIT)
+            {
+                DS4Device d = App.rootHub.DS4Controllers[deviceNum];
+                if (d != null)
+                {
+
+                    var oldValue = profileSettingsVM.LeftTrigger;
+                    DS4HapticState.TriggerType currentVal = DS4HapticState.TriggerType.Off;
+                    switch (cLeftTrigger.SelectedIndex)
+                    {
+                        case 0:
+                            currentVal = DS4HapticState.TriggerType.Off;
+                            break;
+                        case 1:
+                            currentVal = DS4HapticState.TriggerType.Rigid;
+                            break;
+                        case 2:
+                            currentVal = DS4HapticState.TriggerType.Pulse;
+                            break;
+                    }
+                    profileSettingsVM.LeftTrigger = cLeftTrigger.SelectedIndex;
+                    if (d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
+                    {
+                        var dd = (DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)d;
+                        dd.SetLeftTrigger(currentVal);
+                    }
+                }
+            }
+        }
+
+        private void sRightTrigger_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (profileSettingsVM == null) return;
+            int deviceNum = profileSettingsVM.FuncDevNum;
+            if (deviceNum < ControlService.CURRENT_DS4_CONTROLLER_LIMIT)
+            {
+                DS4Device d = App.rootHub.DS4Controllers[deviceNum];
+                if (d != null)
+                {
+                    var oldValue = profileSettingsVM.RightTriggerForce;
+     
+                    profileSettingsVM.RightTriggerForce =(int) sRightTrigger.Value;
+                    if (d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
+                    {
+                        var dd = (DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)d;
+                        dd.SetRightTriggerForce(profileSettingsVM.RightTriggerForce);
+                    }
+                }
+            }
+        }
+
+        private void sLeftTrigger_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (profileSettingsVM == null) return;
+            int deviceNum = profileSettingsVM.FuncDevNum;
+            if (deviceNum < ControlService.CURRENT_DS4_CONTROLLER_LIMIT)
+            {
+                DS4Device d = App.rootHub.DS4Controllers[deviceNum];
+                if (d != null)
+                {
+                    var oldValue = profileSettingsVM.LeftTriggerForce;
+
+                    profileSettingsVM.LeftTriggerForce = (int)sLeftTrigger.Value;
+                    if (d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
+                    {
+                        var dd = (DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)d;
+                        dd.SetLeftTriggerForce(profileSettingsVM.LeftTriggerForce);
+                    }
+                }
+            }
+        }
     }
 }

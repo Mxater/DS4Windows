@@ -93,6 +93,8 @@ namespace DS4Windows
         public byte LightBarFlashDurationOn, LightBarFlashDurationOff;
         public byte RumbleMotorStrengthLeftHeavySlow, RumbleMotorStrengthRightLightFast;
         public bool RumbleMotorsExplicitlyOff;
+        public TriggerType LeftTrigger;
+        public TriggerType RightTrigger;
 
         public bool IsLightBarSet()
         {
@@ -103,6 +105,12 @@ namespace DS4Windows
         {
             const byte zero = 0;
             return RumbleMotorsExplicitlyOff || RumbleMotorStrengthLeftHeavySlow != zero || RumbleMotorStrengthRightLightFast != zero;
+        }
+        public enum TriggerType: byte
+        {
+            Off =0x0 ,
+            Rigid =0x1,
+            Pulse =0x2
         }
     }
 
@@ -1634,7 +1642,7 @@ namespace DS4Windows
             }
         }
 
-        protected void MergeStates()
+        public void MergeStates()
         {
             if (testRumble.IsRumbleSet())
             {

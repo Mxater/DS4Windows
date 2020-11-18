@@ -637,7 +637,7 @@ namespace DS4WinWPF.DS4Library.InputDevices
                     }
 
                     Report?.Invoke(this, EventArgs.Empty);
-                    //WriteReport();
+                    WriteReport();
 
                     forceWrite = false;
 
@@ -671,12 +671,45 @@ namespace DS4WinWPF.DS4Library.InputDevices
         protected override void StopOutputUpdate()
         {
         }
-
+        DS4HapticState.TriggerType rightTrigger;
+        DS4HapticState.TriggerType leftTrigger;
+        int leftTriggerForce;
+        int rightTriggerForce;
         private void WriteReport()
         {
-            outputReport[0] = 0x31;
-            //bool res = hDevice.WriteOutputReportViaInterrupt(outputReport, 0);
+            MergeStates();
+            outputReport[0] = 0x02;//REPORT TYPE
+            outputReport[1] = 0xFF;//CONTROL FLAGS
+            outputReport[2] = 0x1 | 0x2 | 0x4| 0x10; //Control flags
+            outputReport[3] = currentHap.RumbleMotorStrengthRightLightFast; // fast motor
+            outputReport[4] = currentHap.RumbleMotorStrengthLeftHeavySlow; // slow  motor
+            //outputReport[0] = 0x31;
+            outputReport[45] = currentHap.LightBarColor.red; //R
+            outputReport[46] = currentHap.LightBarColor.green; //G
+            outputReport[47] = currentHap.LightBarColor.blue;//B
+            outputReport[11] = (byte)rightTrigger;
+            outputReport[12] = (byte)rightTriggerForce;
+            outputReport[22] = (byte)leftTrigger;
+            outputReport[13] = (byte)rightTriggerForce;
+            bool res = hDevice.WriteOutputReportViaInterrupt(outputReport, 0);
             //Console.WriteLine("STAUTS: {0}", res);
+        }
+
+        public void SetRightTrigger(DS4HapticState.TriggerType trigger)
+        {
+            rightTrigger = trigger;
+        }
+        public void SetLeftTrigger(DS4HapticState.TriggerType trigger)
+        {
+            leftTrigger = trigger;
+        }
+        public void SetLeftTriggerForce(int force)
+        {
+            leftTriggerForce = force;
+        }
+        public void SetRightTriggerForce(int force)
+        {
+            rightTriggerForce = force;
         }
     }
 }

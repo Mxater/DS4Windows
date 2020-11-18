@@ -1303,6 +1303,41 @@
                             <Button x:Name="lightRumbleTestBtn" Content="Test Light" Margin="10,0,0,0" Click="LightRumbleTestBtn_Click" />
                         </UniformGrid>
                     </GroupBox>
+                    <GroupBox Header="{lex:Loc Trigger}" MinHeight="50" Margin="4,4,4,0" Padding="0,4,0,4">
+                        <UniformGrid Rows="1" Columns="2">
+                            <UniformGrid Columns="2" HorizontalAlignment="Left">
+                                <DockPanel>
+                                    <ComboBox Name="cRightTrigger" MinWidth="100" VerticalContentAlignment="Center" Margin="0,0,0,0" SelectedValue="{Binding RightTrigger,FallbackValue=1}" SelectionChanged="cRightTrigger_SelectionChanged">
+                                        <ComboBoxItem Content="Off" />
+                                        <ComboBoxItem Content="Rigid" />
+                                        <ComboBoxItem Content="Pulse" />
+                                    </ComboBox>
+                                    
+                                </DockPanel>
+
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sRightTrigger" Value="{Binding RightTriggerForce,FallbackValue=255}" ValueChanged="sRightTrigger_ValueChanged" />
+                                    
+                                </DockPanel>
+                            </UniformGrid>
+                            <UniformGrid Columns="2" HorizontalAlignment="Left">
+                                <DockPanel>
+                                    <ComboBox Name="cLeftTrigger" MinWidth="100" VerticalContentAlignment="Center" Margin="0,0,0,0" Width="103" SelectedValue="{Binding LeftTrigger,FallbackValue=1}" Height="35" VerticalAlignment="Top" SelectionChanged="cLeftTrigger_SelectionChanged">
+                                        <ComboBoxItem Content="Off" />
+                                        <ComboBoxItem Content="Rigid" />
+                                        <ComboBoxItem Content="Pulse" />
+                                    </ComboBox>
+
+                                </DockPanel>
+
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sLeftTrigger" Value="{Binding LeftTriggerForce,FallbackValue=255}" ValueChanged="sLeftTrigger_ValueChanged" />
+
+                                </DockPanel>
+                            </UniformGrid>
+
+                        </UniformGrid>
+                    </GroupBox>
                     <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                         <Label Content="Use Controller" ToolTip="{lex:Loc Resources:UseControllerForMapping}" />
                         <xctk:IntegerUpDown x:Name="useControllerUD" d:IsHidden="True" Width="40" Margin="8,0,0,0"
@@ -1358,7 +1393,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
                         <Label Content="BT Poll Rate" ToolTip="{lex:Loc Resources:BtPollRate}" />
                         <ComboBox x:Name="btPollRateCombo" SelectedIndex="{Binding TempBTPollRateIndex,FallbackValue=4}" MinWidth="140"
-                                  ToolTip="{lex:Loc Resources:BtPollRate}">
+                                  ToolTip="{lex:Loc Resources:BtPollRate}" SelectionChanged="btPollRateCombo_SelectionChanged">
                             <ComboBoxItem Content="Max (1 ms)" />
                             <ComboBoxItem Content="1000 Hz (1 ms)" />
                             <ComboBoxItem Content="500 Hz (2 ms)" />

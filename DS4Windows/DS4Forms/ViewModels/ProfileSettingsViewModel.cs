@@ -425,6 +425,51 @@ namespace DS4WinWPF.DS4Forms.ViewModels
             }
         }
         public event EventHandler LightRumbleActiveChanged;
+       
+
+        private int leftTrigger;
+        public int LeftTrigger
+        {
+            get => leftTrigger;
+            set
+            {
+                leftTrigger = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private int rightTrigger;
+        public int RightTrigger
+        {
+            get => rightTrigger;
+            set
+            {
+                rightTrigger = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private int leftTriggerForce=255;
+        public int LeftTriggerForce
+        {
+            get => leftTriggerForce;
+            set
+            {
+                leftTriggerForce = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private int rightTriggerForce=255;
+        public int RightTriggerForce
+        {
+            get => rightTriggerForce;
+            set
+            {
+                rightTriggerForce = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
         public bool UseControllerReadout
         {
