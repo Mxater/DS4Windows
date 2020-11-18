@@ -673,8 +673,8 @@ namespace DS4WinWPF.DS4Library.InputDevices
         }
         DS4HapticState.TriggerType rightTrigger;
         DS4HapticState.TriggerType leftTrigger;
-        int leftTriggerForce;
-        int rightTriggerForce;
+        int rightTriggerForce,rightTriggerForce2,rightTriggerForce3, rightTriggerForce4, rightTriggerForce5, rightTriggerForce6, rightTriggerForce7;
+        int leftTriggerForce, leftTriggerForce2,leftTriggerForce3, leftTriggerForce4, leftTriggerForce5, leftTriggerForce6, leftTriggerForce7;
         private void WriteReport()
         {
             MergeStates();
@@ -689,8 +689,20 @@ namespace DS4WinWPF.DS4Library.InputDevices
             outputReport[47] = currentHap.LightBarColor.blue;//B
             outputReport[11] = (byte)rightTrigger;
             outputReport[12] = (byte)rightTriggerForce;
+            outputReport[13] = (byte)rightTriggerForce2;
+            outputReport[14] = (byte)rightTriggerForce3;
+            outputReport[15] = (byte)rightTriggerForce4;
+            outputReport[16] = (byte)rightTriggerForce5;
+            outputReport[17] = (byte)rightTriggerForce6;
+            outputReport[20] = (byte)rightTriggerForce7;
             outputReport[22] = (byte)leftTrigger;
-            outputReport[13] = (byte)rightTriggerForce;
+            outputReport[23] = (byte)leftTriggerForce;
+            outputReport[24] = (byte)leftTriggerForce2;
+            outputReport[25] = (byte)leftTriggerForce3;
+            outputReport[26] = (byte)leftTriggerForce4;
+            outputReport[27] = (byte)leftTriggerForce5;
+            outputReport[28] = (byte)leftTriggerForce6;
+            outputReport[31] = (byte)leftTriggerForce7;
             bool res = hDevice.WriteOutputReportViaInterrupt(outputReport, 0);
             //Console.WriteLine("STAUTS: {0}", res);
         }
@@ -703,13 +715,25 @@ namespace DS4WinWPF.DS4Library.InputDevices
         {
             leftTrigger = trigger;
         }
-        public void SetLeftTriggerForce(int force)
+        public void SetLeftTriggerForce(int force=0,int force2=0, int force3=0, int force4=0, int force5=0, int force6=0, int force7=0)
         {
             leftTriggerForce = force;
+            leftTriggerForce2 = force2;
+            leftTriggerForce3 = force3;
+            leftTriggerForce4 = force4;
+            leftTriggerForce5 = force5;
+            leftTriggerForce6 = force6;
+            leftTriggerForce7 = force7;
         }
-        public void SetRightTriggerForce(int force)
+        public void SetRightTriggerForce(int force = 0, int force2 = 0, int force3 = 0, int force4 = 0, int force5 = 0, int force6 = 0, int force7 = 0)
         {
             rightTriggerForce = force;
+            rightTriggerForce2 = force2;
+            rightTriggerForce3 = force3;
+            rightTriggerForce4 = force4;
+            rightTriggerForce5 = force5;
+            rightTriggerForce6 = force6;
+            rightTriggerForce7 = force7;
         }
     }
 }

@@ -1303,36 +1303,89 @@
                             <Button x:Name="lightRumbleTestBtn" Content="Test Light" Margin="10,0,0,0" Click="LightRumbleTestBtn_Click" />
                         </UniformGrid>
                     </GroupBox>
-                    <GroupBox Header="{lex:Loc Trigger}" MinHeight="50" Margin="4,4,4,0" Padding="0,4,0,4">
-                        <UniformGrid Rows="1" Columns="2">
-                            <UniformGrid Columns="2" HorizontalAlignment="Left">
+                    <GroupBox Header="{lex:Loc Trigger Right}" MinHeight="50" Margin="4,4,4,0" Padding="0,4,0,4">
+                        <UniformGrid Rows="1" Columns="1">
+                            <UniformGrid Columns="5" HorizontalAlignment="Left">
                                 <DockPanel>
-                                    <ComboBox Name="cRightTrigger" MinWidth="100" VerticalContentAlignment="Center" Margin="0,0,0,0" SelectedValue="{Binding RightTrigger,FallbackValue=1}" SelectionChanged="cRightTrigger_SelectionChanged">
+                                    <ComboBox Name="cRightTrigger"  VerticalContentAlignment="Center" Margin="0,0,0,0" SelectionChanged="cRightTrigger_SelectionChanged" SelectedIndex="{Binding RightTrigger,FallbackValue=0}">
                                         <ComboBoxItem Content="Off" />
                                         <ComboBoxItem Content="Rigid" />
                                         <ComboBoxItem Content="Pulse" />
+                                        <ComboBoxItem Content="Rigid + Extra1" />
+                                        <ComboBoxItem Content="Rigid + Extra2" />
+                                        <ComboBoxItem Content="Rigid + Extra1 + Extra2" />
+                                        <ComboBoxItem Content="Pulse + Extra1" />
+                                        <ComboBoxItem Content="Pulse + Extra2" />
+                                        <ComboBoxItem Content="Pulse + Extra1 + Extra2" />
                                     </ComboBox>
                                     
                                 </DockPanel>
 
                                 <DockPanel>
-                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sRightTrigger" Value="{Binding RightTriggerForce,FallbackValue=0}" ValueChanged="sRightTrigger_ValueChanged" />
-                                    
+                                    <Slider  Minimum="0" Maximum="255"  Name="sRightTrigger" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sRightTrigger2" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255"  Name="sRightTrigger3" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255"  Name="sRightTrigger4" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255"  Name="sRightTrigger5" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255"  Name="sRightTrigger6" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sRightTrigger7" Value="0" ValueChanged="sRightTrigger_ValueChanged" />
                                 </DockPanel>
                             </UniformGrid>
-                            <UniformGrid Columns="2" HorizontalAlignment="Left">
+                            
+
+                        </UniformGrid>
+                    </GroupBox>
+                    <GroupBox Header="{lex:Loc Trigger Left}" MinHeight="50" Margin="4,4,4,0" Padding="0,4,0,4">
+                        <UniformGrid Rows="1" Columns="1">
+                            
+                            <UniformGrid Columns="5" HorizontalAlignment="Left">
                                 <DockPanel>
-                                    <ComboBox Name="cLeftTrigger" MinWidth="100" VerticalContentAlignment="Center" Margin="0,0,0,0" Width="103" SelectedValue="{Binding LeftTrigger,FallbackValue=1}" Height="35" VerticalAlignment="Top" SelectionChanged="cLeftTrigger_SelectionChanged">
+                                    <ComboBox Name="cLeftTrigger"  VerticalContentAlignment="Center" Margin="0,0,0,0"  VerticalAlignment="Top" SelectionChanged="cLeftTrigger_SelectionChanged" SelectedIndex="{Binding LeftTrigger,FallbackValue=0}">
                                         <ComboBoxItem Content="Off" />
                                         <ComboBoxItem Content="Rigid" />
                                         <ComboBoxItem Content="Pulse" />
+                                        <ComboBoxItem Content="Rigid + Extra1" />
+                                        <ComboBoxItem Content="Rigid + Extra2" />
+                                        <ComboBoxItem Content="Rigid + Extra1 + Extra2" />
+                                        <ComboBoxItem Content="Pulse + Extra1" />
+                                        <ComboBoxItem Content="Pulse + Extra2" />
+                                        <ComboBoxItem Content="Pulse + Extra1 + Extra2" />
                                     </ComboBox>
 
                                 </DockPanel>
 
                                 <DockPanel>
-                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sLeftTrigger" Value="{Binding LeftTriggerForce,FallbackValue=0}" ValueChanged="sLeftTrigger_ValueChanged" />
-
+                                    <Slider  Minimum="0" Maximum="255"   Name="sLeftTrigger" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sLeftTrigger2" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sLeftTrigger3" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sLeftTrigger4" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sLeftTrigger5" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sLeftTrigger6" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Slider  Minimum="0" Maximum="255" Name="sLeftTrigger7" Value="0" ValueChanged="sLeftTrigger_ValueChanged" />
                                 </DockPanel>
                             </UniformGrid>
 

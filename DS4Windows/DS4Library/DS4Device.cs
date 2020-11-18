@@ -110,7 +110,13 @@ namespace DS4Windows
         {
             Off =0x0 ,
             Rigid =0x1,
-            Pulse =0x2
+            Pulse =0x2,
+            RigidA=0x1 | 0x20,
+            RigidB=0x1 | 0x04,
+            RigidAB=0x1 | 0x20 | 0x04,
+            PulseA = 0x2 | 0x20,
+            PulseB = 0x2 | 0x04,
+            PulseAB = 0x2 | 0x20 | 0x04,
         }
     }
 

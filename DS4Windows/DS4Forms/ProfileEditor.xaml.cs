@@ -1354,6 +1354,7 @@ namespace DS4WinWPF.DS4Forms
         }
         private void cRightTrigger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (profileSettingsVM == null) return;
             int deviceNum = profileSettingsVM.FuncDevNum;
             if (deviceNum < ControlService.CURRENT_DS4_CONTROLLER_LIMIT)
             {
@@ -1374,6 +1375,24 @@ namespace DS4WinWPF.DS4Forms
                         case 2:
                             currentVal = DS4HapticState.TriggerType.Pulse;
                             break;
+                        case 3:
+                            currentVal = DS4HapticState.TriggerType.RigidA;
+                            break;
+                        case 4:
+                            currentVal = DS4HapticState.TriggerType.RigidB;
+                            break;
+                        case 5:
+                            currentVal = DS4HapticState.TriggerType.RigidAB;
+                            break;
+                        case 6:
+                            currentVal = DS4HapticState.TriggerType.PulseA;
+                            break;
+                        case 7:
+                            currentVal = DS4HapticState.TriggerType.PulseB;
+                            break;
+                        case 8:
+                            currentVal = DS4HapticState.TriggerType.PulseAB;
+                            break;
                     }
                     profileSettingsVM.RightTrigger = cRightTrigger.SelectedIndex;
                     if(d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
@@ -1387,6 +1406,7 @@ namespace DS4WinWPF.DS4Forms
 
         private void cLeftTrigger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (profileSettingsVM == null) return;
             int deviceNum = profileSettingsVM.FuncDevNum;
             if (deviceNum < ControlService.CURRENT_DS4_CONTROLLER_LIMIT)
             {
@@ -1406,6 +1426,24 @@ namespace DS4WinWPF.DS4Forms
                             break;
                         case 2:
                             currentVal = DS4HapticState.TriggerType.Pulse;
+                            break;
+                        case 3:
+                            currentVal = DS4HapticState.TriggerType.RigidA;
+                            break;
+                        case 4:
+                            currentVal = DS4HapticState.TriggerType.RigidB;
+                            break;
+                        case 5:
+                            currentVal = DS4HapticState.TriggerType.RigidAB;
+                            break;
+                        case 6:
+                            currentVal = DS4HapticState.TriggerType.PulseA;
+                            break;
+                        case 7:
+                            currentVal = DS4HapticState.TriggerType.PulseB;
+                            break;
+                        case 8:
+                            currentVal = DS4HapticState.TriggerType.PulseAB;
                             break;
                     }
                     profileSettingsVM.LeftTrigger = cLeftTrigger.SelectedIndex;
@@ -1430,10 +1468,16 @@ namespace DS4WinWPF.DS4Forms
                     var oldValue = profileSettingsVM.RightTriggerForce;
      
                     profileSettingsVM.RightTriggerForce =(int) sRightTrigger.Value;
+                    var force2 = (int)sRightTrigger2.Value;
+                    var force3 = (int)sRightTrigger3.Value;
+                    var force4 = (int)sRightTrigger4.Value;
+                    var force5 = (int)sRightTrigger5.Value;
+                    var force6 = (int)sRightTrigger6.Value;
+                    var force7 = (int)sRightTrigger7.Value;
                     if (d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
                     {
                         var dd = (DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)d;
-                        dd.SetRightTriggerForce(profileSettingsVM.RightTriggerForce);
+                        dd.SetRightTriggerForce(profileSettingsVM.RightTriggerForce,force2,force3,force4,force5,force6,force7);
                     }
                 }
             }
@@ -1451,10 +1495,17 @@ namespace DS4WinWPF.DS4Forms
                     var oldValue = profileSettingsVM.LeftTriggerForce;
 
                     profileSettingsVM.LeftTriggerForce = (int)sLeftTrigger.Value;
+                    var force2 = (int)sLeftTrigger2.Value;
+                    var force3 = (int)sLeftTrigger3.Value;
+                    var force4 = (int)sLeftTrigger4.Value;
+                    var force5 = (int)sLeftTrigger5.Value;
+                    var force6 = (int)sLeftTrigger6.Value;
+                    var force7 = (int)sLeftTrigger7.Value;
+                    
                     if (d is DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)
                     {
                         var dd = (DS4WinWPF.DS4Library.InputDevices.DualSenseDevice)d;
-                        dd.SetLeftTriggerForce(profileSettingsVM.LeftTriggerForce);
+                        dd.SetLeftTriggerForce(profileSettingsVM.LeftTriggerForce, force2, force3, force4, force5, force6, force7);
                     }
                 }
             }

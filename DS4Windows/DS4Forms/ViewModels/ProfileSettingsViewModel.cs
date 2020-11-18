@@ -427,7 +427,7 @@ namespace DS4WinWPF.DS4Forms.ViewModels
         public event EventHandler LightRumbleActiveChanged;
        
 
-        private int leftTrigger;
+        private int leftTrigger=0;
         public int LeftTrigger
         {
             get => leftTrigger;
@@ -438,7 +438,7 @@ namespace DS4WinWPF.DS4Forms.ViewModels
             }
         }
 
-        private int rightTrigger;
+        private int rightTrigger=0;
         public int RightTrigger
         {
             get => rightTrigger;
@@ -449,7 +449,7 @@ namespace DS4WinWPF.DS4Forms.ViewModels
             }
         }
 
-        private int leftTriggerForce=255;
+        private int leftTriggerForce=0;
         public int LeftTriggerForce
         {
             get => leftTriggerForce;
@@ -459,14 +459,54 @@ namespace DS4WinWPF.DS4Forms.ViewModels
                 //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
             }
         }
+        private int leftTriggerForce2 = 0;
+        public int LeftTriggerForce2
+        {
+            get => leftTriggerForce2;
+            set
+            {
+                leftTriggerForce2 = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        private int leftTriggerForce3 = 0;
+        public int LeftTriggerForce3
+        {
+            get => leftTriggerForce3;
+            set
+            {
+                leftTriggerForce3 = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
-        private int rightTriggerForce=255;
+        private int rightTriggerForce=0;
         public int RightTriggerForce
         {
             get => rightTriggerForce;
             set
             {
                 rightTriggerForce = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        private int rightTriggerForce2 = 0;
+        public int RightTriggerForce2
+        {
+            get => rightTriggerForce2;
+            set
+            {
+                rightTriggerForce2 = value;
+                //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        private int rightTriggerForce3 = 0;
+        public int RightTriggerForce3
+        {
+            get => rightTriggerForce3;
+            set
+            {
+                rightTriggerForce3 = value;
                 //LightRumbleActiveChanged?.Invoke(this, EventArgs.Empty);
             }
         }
