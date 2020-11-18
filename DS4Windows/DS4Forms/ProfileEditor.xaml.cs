@@ -1352,12 +1352,6 @@ namespace DS4WinWPF.DS4Forms
         {
             ApplyProfileStep();
         }
-
-        private void btPollRateCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void cRightTrigger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int deviceNum = profileSettingsVM.FuncDevNum;

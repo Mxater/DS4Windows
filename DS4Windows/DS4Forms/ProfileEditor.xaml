@@ -1316,7 +1316,7 @@
                                 </DockPanel>
 
                                 <DockPanel>
-                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sRightTrigger" Value="{Binding RightTriggerForce,FallbackValue=255}" ValueChanged="sRightTrigger_ValueChanged" />
+                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sRightTrigger" Value="{Binding RightTriggerForce,FallbackValue=0}" ValueChanged="sRightTrigger_ValueChanged" />
                                     
                                 </DockPanel>
                             </UniformGrid>
@@ -1331,7 +1331,7 @@
                                 </DockPanel>
 
                                 <DockPanel>
-                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sLeftTrigger" Value="{Binding LeftTriggerForce,FallbackValue=255}" ValueChanged="sLeftTrigger_ValueChanged" />
+                                    <Slider  Minimum="0" Maximum="255" MinWidth="100" Width="77" Name="sLeftTrigger" Value="{Binding LeftTriggerForce,FallbackValue=0}" ValueChanged="sLeftTrigger_ValueChanged" />
 
                                 </DockPanel>
                             </UniformGrid>
@@ -1393,7 +1393,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
                         <Label Content="BT Poll Rate" ToolTip="{lex:Loc Resources:BtPollRate}" />
                         <ComboBox x:Name="btPollRateCombo" SelectedIndex="{Binding TempBTPollRateIndex,FallbackValue=4}" MinWidth="140"
-                                  ToolTip="{lex:Loc Resources:BtPollRate}" SelectionChanged="btPollRateCombo_SelectionChanged">
+                                  ToolTip="{lex:Loc Resources:BtPollRate}">
                             <ComboBoxItem Content="Max (1 ms)" />
                             <ComboBoxItem Content="1000 Hz (1 ms)" />
                             <ComboBoxItem Content="500 Hz (2 ms)" />
