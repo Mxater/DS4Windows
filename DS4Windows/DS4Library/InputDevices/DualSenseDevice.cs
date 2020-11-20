@@ -683,15 +683,31 @@ namespace DS4WinWPF.DS4Library.InputDevices
         {
             MergeStates();
             outputReport[0] = 0x02;//REPORT TYPE
-            outputReport[1] = 0xFF;//CONTROL FLAGS
-            outputReport[2] = 0x1 | 0x2 | 0x4| 0x10; //Control flags
+            //outputReport[1] = 0xFF;//CONTROL FLAGS
+            outputReport[1] = 0x01 | 0x02;//CONTROL FLAGS
+            if (rightTrigger == DS4HapticState.TriggerType.Pulse)
+            {
+                //outputReport[1] = 0x01 | 0x02 | 0x03 | 0x04;
+            }
+            else
+            {
+                //outputReport[1] = 0x01 | 0x02;
+            }
+            outputReport[2] = 0x1 | 0x2 | 0x40; //Control flags
             outputReport[3] = currentHap.RumbleMotorStrengthRightLightFast; // fast motor
             outputReport[4] = currentHap.RumbleMotorStrengthLeftHeavySlow; // slow  motor
             //outputReport[0] = 0x31;
-            outputReport[45] = currentHap.LightBarColor.red; //R
-            outputReport[46] = currentHap.LightBarColor.green; //G
-            outputReport[47] = currentHap.LightBarColor.blue;//B
-            outputReport[11] = (byte)rightTrigger;
+            
+            if (currentHap.LightBarExplicitlyOff)
+            {
+                //outputReport[2] += 0x04 | 0x10;
+                outputReport[2] += 0x04 ;
+                outputReport[45] = currentHap.LightBarColor.red; //R
+                outputReport[46] = currentHap.LightBarColor.green; //G
+                outputReport[47] = currentHap.LightBarColor.blue;//B
+            }
+            
+            /*outputReport[11] = (byte)rightTrigger;
             outputReport[12] = (byte)rightTriggerForce;
             outputReport[13] = (byte)rightTriggerForce2;
             outputReport[14] = (byte)rightTriggerForce3;
@@ -706,7 +722,7 @@ namespace DS4WinWPF.DS4Library.InputDevices
             outputReport[26] = (byte)leftTriggerForce4;
             outputReport[27] = (byte)leftTriggerForce5;
             outputReport[28] = (byte)leftTriggerForce6;
-            outputReport[31] = (byte)leftTriggerForce7;
+            outputReport[31] = (byte)leftTriggerForce7;*/
             bool res = hDevice.WriteOutputReportViaInterrupt(outputReport, 0);
             //Console.WriteLine("STAUTS: {0}", res);
         }
